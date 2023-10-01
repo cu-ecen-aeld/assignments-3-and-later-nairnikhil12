@@ -87,7 +87,8 @@ ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
 # TODO: Add library dependencies to rootfs
-export SYSROOT=/home/nikhil/arm-cross-compiler/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc
+#export SYSROOT=/home/nikhil/arm-cross-compiler/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc
+export SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
 
 cp ${SYSROOT}/lib/ld-linux-aarch64.so.1 lib
 cp ${SYSROOT}/lib64/libm.so.6 lib64
